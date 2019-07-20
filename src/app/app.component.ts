@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Post } from './models/post.model';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -9,33 +11,17 @@ export class AppComponent {
 
   title = 'exercice';
 
-  posts: Array<Post> = [
-    {
-      title : 'Mon premier post',
-      content : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-      loveIts : 0,
-      created_at : new Date()
-    },
-    {
-      title : 'Mon deuxième post',
-      content : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-      loveIts : 0,
-      created_at : new Date()
-    },
-    {
-      title : 'Mon troisième post',
-      content : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-      loveIts : 0,
-      created_at : new Date()
+  constructor(){
+    const config = {
+      apiKey: "AIzaSyC7HXiGeCibu_VXy3ovKLukHyV-c3C5D_U",
+      authDomain: "exercice-post.firebaseapp.com",
+      databaseURL: "https://exercice-post.firebaseio.com",
+      projectId: "exercice-post",
+      storageBucket: "",
+      messagingSenderId: "1094915623439",
+      appId: "1:1094915623439:web:f7bc70debe2ea652"
     }
-  ];
+    firebase.initializeApp(config);
+  }
 
 }
-
-
-class Post {
- title: string;
- content: string;
- loveIts : Number;
- created_at: Date;
-};
